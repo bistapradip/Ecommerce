@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %} Our Products {% endblock %}
+{% load static %}
+
+{% block content %}
+<!-- category.html -->
+
+<!-- Link to the external CSS file -->
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+<div class="container">
+    <h1 class="center-align">{{ category.category_name }}</h1>
+    <p class="center-align">{{ category.category_description }}</p>
+
+    <div class="row">
+        {% for product in products %}
+        <div class="col s12 m6 l4">
+            <div class="card equal-height"> <!-- Add a class for equal height -->
+                <div class="card-image">
+                    <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}">
+                    <span class="card-title">{{ product.product_name }}</span>
+                </div>
+                <div class="card-content">
+                    <p>{{ product.product_description }}</p>
+                    <p><strong>Price:</strong> RS {{ product.product_price }}</p>
+
+                    <!-- Quantity input with increment and decrement buttons -->
+                    <div class="quantity-selector">
+                        <button class="btn-small" onclick="decreaseQuantity('{{ product.product_id }}')">-</button>
+                        <input type="number" id="quantity-{{ product.product_id }}" value="1" min="1" class="quantity-input">
+                        <button class="btn-small" onclick="increaseQuantity('{{ product.product_id }}')">+</button>
+                    </div>
+                </div>
+                <div class="card-action">
+                    <a href="#" onclick="addToCart('{{ product.product_id }}')" class="btn waves-effect waves-light">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No products available in this category.</p>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Materialize JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<!-- Custom JavaScript (optional) -->
+<script src="{% static 'js/script.js' %}"></script>
+
+<!-- Inline JavaScript for quantity control and Add to Cart -->
+<script>
+    function increaseQuantity(productId) {
+        let quantityInput = document.getElementById('quantity-' + productId);
+        let currentQuantity = parseInt(quantityInput.value);
+        if (!isNaN(currentQuantity)) {
+            quantityInput.value = currentQuantity + 1;
+        }
+    }
+
+    function decreaseQuantity(productId) {
+        let quantityInput = document.getElementById('quantity-' + productId);
+        let currentQuantity = parseInt(quantityInput.value);
+        if (!isNaN(currentQuantity) && currentQuantity > 1) {
+            quantityInput.value = currentQuantity - 1;
+        }
+    }
+
+    function addToCart(productId) {
+        let quantity = document.getElementById('quantity-' + productId).value;
+        let url = "{% url 'add_to_cart' 0 %}".replace('0', productId) + "?quantity=" + quantity;
+        window.location.href = url;
+    }
+</script>
+
+{% endblock %}

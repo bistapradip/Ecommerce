@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+
+
+{%block title%}Welcome to the Engineer Bakery{%endblock%}
+
+
+
+
+{%block content%}
+<br>
+<br>
+
+
+<style>
+    .card {
+        width: 300px; /* Fixed width */
+        height: 400px; /* Fixed height */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .img-container {
+        height: 200px; /* Fixed height for image container */
+        overflow: hidden;
+    }
+
+    .img-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensure the image covers the container */
+    }
+
+    .card-content {
+        flex: 1;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m6 offset-m3">
+        <div class="card z-depth-3">
+            <div class="card-image">
+                <img src="images/sample-1.jpg" alt="Sample Image" class="responsive-img">
+                <span class="card-title black  -text">Customized Card Title</span>
+            </div>
+            <div class="card-content">
+                <p>This is a more customized card. It's great for displaying concise information and looks stylish with minimal markup.</p>
+            </div>
+            <div class="card-action">
+                <a href="#" class="blue-text text-darken-2">Explore More</a>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}
+
+{%block js%}
+<script>
+    console.log("Testing");
+    if(localStorage.getItem('cart') == null){
+        var cart = {};
+    }
+    else{
+        cart = JSON.parse(localStorage.getItem('cart'));
+    }
+    $('.cart').click(function(){
+        console.log('clicked');
+    });
+</script>
+{%endblock%}

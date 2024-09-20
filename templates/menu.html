@@ -1,0 +1,83 @@
+    {% extends "base.html" %}
+
+    {%block title%}Our Menu{% endblock %}
+    {%block content%}
+    <!-- Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        .menu-card {
+            margin: 20px;
+        }
+        .menu-card .card-content {
+            text-align: center;
+        }
+        .menu-card .card-image img {
+            height: 200px;
+            object-fit: cover;
+        }
+        .menu-card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .menu-card-price {
+            color: #ff6f00;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <!-- Card 1 -->
+            <div class="col s12 m6 l4">
+                <div class="card menu-card">
+                    <div class="card-image">
+                        <img src="path_to_image/croissant.jpg" alt="Croissant">
+                    </div>
+                    <div class="card-content">
+                        <span class="menu-card-title">Croissant</span>
+                        <p>Buttery and flaky croissant, perfect for breakfast.</p>
+                        <div class="menu-card-price">$2.50</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col s12 m6 l4">
+                <div class="card menu-card">
+                    <div class="card-image">
+                        <img src="path_to_image/cupcake.jpg" alt="Cupcake">
+                    </div>
+                    <div class="card-content">
+                        <span class="menu-card-title">Cupcake</span>
+                        <p>Delicious vanilla cupcake with creamy frosting.</p>
+                        <div class="menu-card-price">$3.00</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col s12 m6 l4">
+                <div class="card menu-card">
+                    <div class="card-image">
+                        <img src="path_to_image/bread.jpg" alt="Bread">
+                    </div>
+                    <div class="card-content">
+                        <span class="menu-card-title">Artisan Bread</span>
+                        <p>Freshly baked artisan bread with a crispy crust.</p>
+                        <div class="menu-card-price">$4.50</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add more cards as needed -->
+        </div>
+    </div>
+
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+{%endblock%}

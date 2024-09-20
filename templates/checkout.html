@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}Checkout{% endblock %}
+{% load static %}
+
+{% block content %}
+<!-- Link the external CSS file -->
+<link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+
+<div class="container">
+    <!-- Checkout Heading -->
+    <div class="row center-align">
+        <h1>Checkout</h1>
+    </div>
+
+    <!-- Total Quantity Section -->
+    <div class="row">
+        <div class="col s12 m6">
+            <div class="card-panel teal lighten-4">
+                <h5>Total Quantity</h5>
+                <p>{{ total_quantity }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Items Section -->
+    <div class="row">
+        <div class="col s12">
+            <table class="striped centered responsive-table">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Update Quantity</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in cart_items %}
+                    <tr>
+                        <td>{{ item.product.product_name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <!-- Form to update item quantity -->
+                        <td>
+                            <form action="{% url 'update_cart' item.id %}" method="post">
+                                {% csrf_token %}
+                                <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="{{ item.product.stock }}">
+                                <button type="submit" class="btn-small waves-effect waves-light">Update</button>
+                            </form>
+                        </td>
+                        <!-- Form to delete item -->
+                        <td>
+                            <form action="{% url 'delete_cart' item.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn-small red waves-effect waves-light">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Submit Order Section -->
+<div class="row">
+    <div class="col s12">
+        <form action="{% url 'mail' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn waves-effect waves-light">Submit Order</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

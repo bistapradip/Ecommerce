@@ -1,0 +1,55 @@
+{% load static %}
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+    {% for category in categories %}
+    <li><a href="/home/category/{{ category.category_url }}/">{{ category.category_name }}</a></li>
+    {% endfor %}
+</ul>
+
+
+<nav>
+    <div class="nav-wrapper">
+        <a href="{% url 'home' %}" class="brand-logo">
+            <img src="{% static 'images/Bakery Logo.png' %}" alt="Logo" style="height: 60px; width: auto; padding: 5px 10px;">
+        </a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="{% url 'register' %}">Sign Up</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <!-- Dropdown Trigger -->
+            <li><a class="dropdown-trigger" href="/home/category/" data-target="dropdown1">Categories
+                <span class="custom-arrow"></span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- CSS for Custom Animated Arrow -->
+<style>
+    /* Custom arrow styles */
+    .custom-arrow {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-right: 2px solid #fff;
+        border-bottom: 2px solid #fff;
+        transform: rotate(45deg);
+        margin-left: 5px;
+        transition: transform 0.3s ease;
+    }
+
+    /* Animation for rotating the arrow on hover */
+    .dropdown-trigger:hover .custom-arrow {
+        transform: rotate(-135deg);
+    }
+</style>
+
+<!-- JavaScript Initialization -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.dropdown-trigger');
+        var instances = M.Dropdown.init(elems, {
+            coverTrigger: false,  // Ensures dropdown is aligned with the trigger
+            hover: true,          // Dropdown opens on hover
+        });
+    });
+</script>

@@ -1,0 +1,94 @@
+/* checkout.css */
+
+/* Container and alignment */
+.container {
+    margin-top: 50px;
+}
+
+/* Checkout Heading */
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ff7043;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+/* Total Quantity and Price Card */
+.card-panel {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #e0f7fa;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-panel h5 {
+    font-size: 1.5rem;
+    color: #00796b;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-panel p {
+    font-size: 1.2rem;
+    color: #004d40;
+    font-weight: normal;
+}
+
+/* Table Styling */
+table {
+    margin-top: 30px;
+    border-collapse: collapse;
+}
+
+table.striped th, table.striped td {
+    padding: 15px;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+table.striped th {
+    background-color: #ffab40;
+    color: white;
+    text-transform: uppercase;
+}
+
+table.striped tr:nth-child(odd) {
+    background-color: #f0f4c3;
+}
+
+table.striped tr:nth-child(even) {
+    background-color: #fff9c4;
+}
+
+/* Button Styling */
+.btn {
+    background-color: #ff7043;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    background-color: #ff5722;
+}
+
+.btn:active {
+    background-color: #e64a19;
+}
+
+/* Form submission section */
+form {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+form button {
+    width: 100%;
+    max-width: 300px;
+}
